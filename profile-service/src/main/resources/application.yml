@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: user-profile-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/linkedhub
+    username: postgres
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: -1      # 0: no wait for kafka response
+                    # 1: leader write success, not wait for follower
+                    #-1: wait for all leader, and replication
+      retries: 1    # retries when event send error
+      properties:
+        [enable.idempotence]: true    # check duplicate event
+        [max.in.flight.requests.per.connection]: 5
+
+server:
+  port: 8081
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
