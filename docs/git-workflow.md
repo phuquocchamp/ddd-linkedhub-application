@@ -13,7 +13,7 @@ We use a **Gitflow-inspired workflow** tailored for microservices development. T
 ### 🔄 Branching Strategy
 
 - **main**: The production-ready branch. It contains the latest stable code that is deployed to production.
-- **develop**: The integration branch for upcoming releases. It reflects the latest development changes and is used for testing and staging.
+- **dev**: The integration branch for upcoming releases. It reflects the latest development changes and is used for testing and staging.
 - **feature/**: Feature branches for new features or enhancements (e.g., `feature/add-user-auth`).
 - **bugfix/**: Branches for fixing bugs in the `develop` or `main` branch (e.g., `bugfix/fix-login-error`).
 - **hotfix/**: Branches for urgent fixes in production (e.g., `hotfix/patch-auth-service`).
@@ -108,7 +108,7 @@ We follow a structured commit message format to ensure clarity and enable automa
 ### Format
 
 ```
-<type>(<scope>): <short description>
+<type> (<scope>): <short description>
 
 [optional body]
 
@@ -117,13 +117,13 @@ We follow a structured commit message format to ensure clarity and enable automa
 
 #### Types
 
-- `feat`: A new feature (e.g., `feat(auth): add JWT token generation`).
-- `fix`: A bug fix (e.g., `fix(profile): resolve null pointer in profile update`).
-- `docs`: Documentation changes (e.g., `docs(readme): update setup instructions`).
+- `feat`: A new feature (e.g., `feat (auth): add JWT token generation`).
+- `fix`: A bug fix (e.g., `fix (profile): resolve null pointer in profile update`).
+- `docs`: Documentation changes (e.g., `docs (readme): update setup instructions`).
 - `style`: Code style changes (formatting, linting) (e.g., `style(gateway): fix indentation`).
-- `refactor`: Code refactoring (e.g., `refactor(auth): simplify login logic`).
-- `test`: Adding or updating tests (e.g., `test(profile): add unit tests for profile service`).
-- `chore`: Miscellaneous changes (e.g., `chore(deps): update dependencies`).
+- `refactor`: Code refactoring (e.g., `refactor (auth): simplify login logic`).
+- `test`: Adding or updating tests (e.g., `test (profile): add unit tests for profile service`).
+- `chore`: Miscellaneous changes (e.g., `chore (deps): update dependencies`).
 
 #### Scope
 
@@ -131,9 +131,9 @@ We follow a structured commit message format to ensure clarity and enable automa
 
 #### Examples
 
-- `feat(auth): implement user registration endpoint`
-- `fix(profile): handle missing skills field in update API`
-- `docs(readme): add Git workflow section`
+- `feat (auth): implement user registration endpoint`
+- `fix (profile): handle missing skills field in update API`
+- `docs (readme): add Git workflow section`
 
 #### Additional Notes
 
@@ -152,7 +152,7 @@ We follow a structured commit message format to ensure clarity and enable automa
 
 ### Pull Request Guidelines
 
-- PR titles should follow the commit message format: `feat(auth): add user registration`.
+- PR titles should follow the commit message format: `feat (auth): add user registration`.
 - Ensure PRs are small and focused (one feature or bugfix per PR).
 - Include automated tests for new features or bug fixes.
 - PRs must pass all CI checks (e.g., unit tests, code linting) before merging.
@@ -177,8 +177,8 @@ We follow a structured commit message format to ensure clarity and enable automa
 ## 🛡️ Best Practices
 
 - **Keep Commits Small**: Each commit should represent a single logical change.
-- **Pull Frequently**: Regularly pull from `develop` to avoid merge conflicts.
-- **Avoid Force Pushes**: Do not force push to shared branches (`main`, `develop`).
+- **Pull Frequently**: Regularly pull from `dev` to avoid merge conflicts.
+- **Avoid Force Pushes**: Do not force push to shared branches (`main`, `dev`).
 - **Backup Before Rebasing**: If rebasing is necessary, ensure you have a backup of your branch.
 - **Automate Where Possible**: Use CI/CD pipelines to automate testing, building, and deployment.
 
