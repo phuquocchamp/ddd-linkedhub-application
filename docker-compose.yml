@@ -10,6 +10,24 @@ services:
     ports:
       - "5432:5432"
 
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.13-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5672:5672" # AMQP port
+      - "15672:15672" # Management UI port
+    restart: "on-failure"
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+
+
   zookeeper:
     container_name: zookeeper
     image: confluentinc/cp-zookeeper:latest
