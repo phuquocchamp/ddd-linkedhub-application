@@ -1,21 +1,59 @@
+server:
+  port: 8080
+
 spring:
   application:
-    name: gateway-service
+    name: "gateway-service"
+
+  config:
+    import: "optional:configserver:http://localhost:8888"
   cloud:
     gateway:
       discovery:
         locator:
-          enabled: true
+          enabled: false
+          lower-case-service-id: true
+    bus:
+      enabled: true
+      refresh:
+        enabled: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      access: unrestricted
+  info:
+    env:
+      enabled: true
+
 
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: "http://localhost:8761/eureka"
 
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
-server:
-  port: 8082
+
+info:
+  application:
+    name: ${spring.application.name}
+    description: Gateway Service for Domain Driven Deign LinkedHub
+    version: 1.0.0
+  env:
+    enabled: true
