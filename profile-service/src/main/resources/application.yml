@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8092
 
 spring:
   application:
@@ -24,9 +24,9 @@ spring:
     password: guest
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/linkedhub
+    url: jdbc:postgresql://localhost:5433/profile
     username: postgres
-    password: password
+    password: secret
   jpa:
     hibernate:
       ddl-auto: update
