@@ -1,0 +1,10 @@
+services:
+  db:
+    container_name: profile-database
+    image: postgres:14
+    environment:
+      - POSTGRES_DB=profile
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=secret
+    ports:
+      - "5433:5432"

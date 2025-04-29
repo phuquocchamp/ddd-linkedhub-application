@@ -45,7 +45,7 @@ The project is organized into multiple microservices, each focusing on a specifi
 1. **Clone the Repository**:
 
    ```bash
-   git clone <repository-url>
+   git clone <jpa-url>
    cd linkedhub
    ```
 

@@ -1,18 +1,25 @@
 info:
   application:
     name: ${spring.application.name}
-    description: Gateway Service for Domain Driven Deign LinkedHub
+    description: Auth Service for Domain Driven Deign LinkedHub
     version: 1.0.0
   env:
     enabled: true
 
 server:
-  port: 8080
+  port: 8091
 
 spring:
   application:
-    name: "gateway-service"
-
+    name: "auth-service"
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/auth
+    username: "postgres"
+    password: "secret"
 
   config:
     import: "optional:configserver:http://localhost:8888"
@@ -27,23 +34,38 @@ spring:
       refresh:
         enabled: true
 
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  data:
+    redis:
+      host: "localhost"
+      port: 6379
+
+  mail:
+    host: localhost
+    port: 1025
+    properties:
+      mail.smtp.auth: false
+
+jwt:
+  secret:
+    key: "blj8MNM/hiV/8XJ7kh9SuSOIiseqjSIlP+zLigU1N24kp0ISrFWbEQ=="
+    expiration: 3600000 # 1 hour
+
 management:
   endpoints:
     web:
       exposure:
-        include: health, metrics, prometheus
+        include: "*"
   endpoint:
-    health:
-      show-details: always
     gateway:
       access: unrestricted
   info:
     env:
       enabled: true
-  prometheus:
-    metrics:
-      export:
-        enabled: true
 
 
 eureka:
@@ -57,8 +79,7 @@ eureka:
 
 logging:
   level:
-    org.springframework.cloud.gateway: DEBUG
-#  file:
-#    name: ./gateway-service/logs/gateway.log
-#  pattern:
-#    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    org.springframework.web: DEBUG
+
+
+
