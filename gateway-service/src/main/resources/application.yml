@@ -1,9 +1,18 @@
+info:
+  application:
+    name: ${spring.application.name}
+    description: Gateway Service for Domain Driven Deign LinkedHub
+    version: 1.0.0
+  env:
+    enabled: true
+
 server:
   port: 8080
 
 spring:
   application:
     name: "gateway-service"
+
 
   config:
     import: "optional:configserver:http://localhost:8888"
@@ -18,23 +27,23 @@ spring:
       refresh:
         enabled: true
 
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-
 management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: health, metrics, prometheus
   endpoint:
+    health:
+      show-details: always
     gateway:
       access: unrestricted
   info:
     env:
       enabled: true
+  prometheus:
+    metrics:
+      export:
+        enabled: true
 
 
 eureka:
@@ -49,11 +58,7 @@ eureka:
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
-
-info:
-  application:
-    name: ${spring.application.name}
-    description: Gateway Service for Domain Driven Deign LinkedHub
-    version: 1.0.0
-  env:
-    enabled: true
+#  file:
+#    name: ./gateway-service/logs/gateway.log
+#  pattern:
+#    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
