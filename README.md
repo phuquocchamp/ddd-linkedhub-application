@@ -2,7 +2,7 @@
    DOMAIN DRIVEN DESIGN - LINKEDHUB APPLICATION
 </h2>
 
-<h4 align="center">A professional networking platform inspired by LinkedIn.</h4>
+<h4 align="center">A professional networking platform inspired by LinkedIn</h4>
 
 <p align="center">
   <a href="https://spring.io/projects/spring-boot">
@@ -36,19 +36,24 @@
     <img src="https://img.shields.io/badge/Redis-7.2-red.svg?style=flat&logo=redis" alt="Redis">
   </a>
 </p>
-<p align="center">
+
+<div align="center">
   <a href="#key-features">Key Features</a> •
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#download">Download</a> •
-  <a href="#credits">Credits</a> •
+  <a href="#architecture">Architecture</a> •
+  <a href="#project-structure">Project Structure</a> •
+  <a href="#technologies-used">Technologies Used</a> •
+  <a href="#getting-started">Getting Started</a> •
+  <a href="#future-enhancements">Future Enhancements</a> •
+  <a href="#contributing">Contributing</a> •
   <a href="#related">Related</a> •
-  <a href="#license">License</a>
-</p>
+  <a href="#license">License</a> •
+  <a href="#contact">Contact</a>
+</div>
 
 ### 📋 Overview
-<h5 align="left">
-   LinkedHub is a professional networking platform inspired by LinkedIn, designed and developed using Domain-Driven Design (DDD) principles and a microservices architecture. The project leverages Java Spring Boot to build scalable, maintainable, and loosely coupled services. This repository contains the backend implementation of the LinkedHub system.
-</h5>
+
+LinkedHub is a professional networking platform inspired by LinkedIn, designed and developed using Domain-Driven Design (DDD) principles and a microservices architecture. The project leverages Java Spring Boot to build scalable, maintainable, and loosely coupled services. This repository contains the backend implementation of the LinkedHub system.
+
 
 ### 🏗️ Project Structure
 
