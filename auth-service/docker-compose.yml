@@ -1,9 +1,9 @@
 services:
   database:
-    container_name: database
+    container_name: auth-database
     image: postgres:14
     environment:
-      - POSTGRES_DB=linkedhub
+      - POSTGRES_DB=auth
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=secret
     ports:
