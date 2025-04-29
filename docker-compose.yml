@@ -1,15 +1,4 @@
-version: '3.8'
 services:
-  db:
-    container_name: database
-    image: postgres:14
-    environment:
-      - POSTGRES_DB=linkedhub
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
-    ports:
-      - "5432:5432"
-
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:3.13-management
