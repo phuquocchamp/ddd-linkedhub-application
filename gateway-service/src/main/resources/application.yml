@@ -12,8 +12,6 @@ server:
 spring:
   application:
     name: "gateway-service"
-
-
   config:
     import: "optional:configserver:http://localhost:8888"
   cloud:
@@ -26,6 +24,12 @@ spring:
       enabled: true
       refresh:
         enabled: true
+
+jwt:
+  secret:
+    key: "blj8MNM/hiV/8XJ7kh9SuSOIiseqjSIlP+zLigU1N24kp0ISrFWbEQ=="
+    expiration: 3600000 # 1 hour
+
 
 management:
   endpoints:

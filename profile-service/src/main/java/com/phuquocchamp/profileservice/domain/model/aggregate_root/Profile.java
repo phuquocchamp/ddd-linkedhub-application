@@ -1,57 +1,47 @@
 package com.phuquocchamp.profileservice.domain.model.aggregate_root;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.phuquocchamp.profileservice.domain.model.entity.Certificate;
 import com.phuquocchamp.profileservice.domain.model.entity.Education;
 import com.phuquocchamp.profileservice.domain.model.entity.Experience;
-import com.phuquocchamp.profileservice.domain.model.value_object.Email;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
+@Table(name = "profile")
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Profile {
     @Id
-    private String id;
-
-    private String name;
-
-    @Embedded
-    private Email email;
+    private UUID profileID;
+    @Column(nullable = false, unique = true)
+    private UUID userID;
+    private String firstName;
+    private String lastName;
 
     private String headline;
-    private String profilePictureUrl;
+    private String summary;
+    private String location;
+    private String profilePictureURL;
+    private String phone;
 
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<Education> educations = new ArrayList<>();
+    private boolean isPublic = true;
 
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<Experience> experiences = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Education> educations = new HashSet<>();
 
-    public Profile(String id, String name, Email email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-    }
+    @JsonIgnore
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Experience> experiences = new HashSet<>();
 
-    public void addEducation(Education education) {
-        educations.add(education);
-    }
-
-    public void addExperience(Experience experience) {
-        experiences.add(experience);
-    }
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Certificate> certificates = new HashSet<>();
 }

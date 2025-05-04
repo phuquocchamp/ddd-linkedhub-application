@@ -12,6 +12,7 @@ server:
 spring:
   application:
     name: "auth-service"
+
   jpa:
     show-sql: true
     hibernate:

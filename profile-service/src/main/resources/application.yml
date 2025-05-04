@@ -4,8 +4,7 @@ server:
 spring:
   application:
     name: profile-service
-  profiles:
-    active: dev
+
   config:
     import: optional:configserver:http://localhost:8888/
 
@@ -30,7 +29,15 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone=UTC
+  jackson:
+    time-zone: UTC
   kafka:
     bootstrap-servers: localhost:9092
     producer:
@@ -69,3 +76,10 @@ eureka:
 logging:
   level:
     org.springframework.cloud.config: DEBUG
+    org:
+      hibernate:
+        sql: debug
+        type:
+          descriptor:
+            sql:
+              BasicBinder=TRACE:
