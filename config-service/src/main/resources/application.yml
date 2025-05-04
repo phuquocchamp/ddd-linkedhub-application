@@ -16,6 +16,9 @@ spring:
           timeout: 5
           clone-on-start: true
           force-pull: true
+
+      profile: dev
+
     bus:
       enabled: true
       refresh:
