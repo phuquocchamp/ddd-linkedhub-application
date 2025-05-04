@@ -1,4 +1,4 @@
-package com.phuquocchamp.profileservice.application.config;
+package com.phuquocchamp.profileservice.infrastructure.config;
 
 import com.phuquocchamp.profileservice.application.dto.ServiceInfoDto;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "")
 @Getter
 @Setter
-public class AppConfig {
+public class ServiceInfo {
     private Map<String, String> build;
     private Map<String, String> application;
 
