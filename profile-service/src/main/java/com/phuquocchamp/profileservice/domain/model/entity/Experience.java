@@ -1,5 +1,6 @@
 package com.phuquocchamp.profileservice.domain.model.entity;
 
+import com.phuquocchamp.profileservice.domain.model.aggregate_root.Profile;
 import com.phuquocchamp.profileservice.domain.model.value_object.DateRange;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,9 @@ public class Experience {
     private String location;
 
     @Embedded
-    private DateRange dateRange;
+    private DateRange dateRange = new DateRange();
 
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
 }

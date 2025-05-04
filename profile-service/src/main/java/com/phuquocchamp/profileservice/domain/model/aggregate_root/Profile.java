@@ -1,5 +1,6 @@
 package com.phuquocchamp.profileservice.domain.model.aggregate_root;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.phuquocchamp.profileservice.domain.model.entity.Certificate;
 import com.phuquocchamp.profileservice.domain.model.entity.Education;
 import com.phuquocchamp.profileservice.domain.model.entity.Experience;
@@ -9,9 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "profile")
@@ -21,9 +20,9 @@ import java.util.UUID;
 public class Profile {
     @Id
     private UUID profileID;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private UUID userID;
-    private String fistName;
+    private String firstName;
     private String lastName;
 
     private String headline;
@@ -34,12 +33,15 @@ public class Profile {
 
     private boolean isPublic = true;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Education> educations = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Education> educations = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Experience> experiences = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Experience> experiences = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Certificate> certificates = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Certificate> certificates = new HashSet<>();
 }

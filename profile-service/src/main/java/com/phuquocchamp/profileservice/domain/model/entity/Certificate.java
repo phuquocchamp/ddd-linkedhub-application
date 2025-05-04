@@ -1,10 +1,8 @@
 package com.phuquocchamp.profileservice.domain.model.entity;
 
+import com.phuquocchamp.profileservice.domain.model.aggregate_root.Profile;
 import com.phuquocchamp.profileservice.domain.model.value_object.DateRange;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,4 +26,8 @@ public class Certificate {
 
     @Embedded
     private DateRange dateRange;
+
+    @ManyToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
 }
