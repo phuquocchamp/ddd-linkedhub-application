@@ -16,22 +16,7 @@ spring:
           timeout: 5
           clone-on-start: true
           force-pull: true
-
-      profile: dev
-
-    bus:
-      enabled: true
-      refresh:
-        enabled: true
-
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-
-encrypt:
-  key: "45D81EC1EF61DF9AD8D3E5BB397F9"
+          search-paths: "{application}"
 
 management:
   endpoints:
@@ -47,11 +32,3 @@ management:
     health:
       probes:
         enabled: true
-
-
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
