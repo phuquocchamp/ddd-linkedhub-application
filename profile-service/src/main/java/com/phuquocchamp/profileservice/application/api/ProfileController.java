@@ -8,12 +8,13 @@ import com.phuquocchamp.profileservice.application.dto.response.ProfileResponse;
 import com.phuquocchamp.profileservice.application.dto.response.ProfileUpdateResponse;
 import com.phuquocchamp.profileservice.domain.service.ProfileService;
 import jakarta.validation.Valid;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RefreshScope
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/v1/profiles")
 public class ProfileController {
@@ -25,10 +26,13 @@ public class ProfileController {
         this.serviceInfo = serviceInfo;
     }
 
-    @GetMapping("/info")
-    public ResponseEntity<ServiceInfoDto> getInfo() {
-        return new ResponseEntity<>(serviceInfo, HttpStatus.OK);
-    }
+ @GetMapping("/info")
+public ResponseEntity<Map<String, Map<String, String>>> getInfo() {
+    Map<String, Map<String, String>> result = new HashMap<>();
+    result.put("build", serviceInfo.getBuild());
+    result.put("contact", serviceInfo.getContact());
+    return new ResponseEntity<>(result, HttpStatus.OK);
+}
 
     @PostMapping()
     public ResponseEntity<ProfileResponse> createProfile(@RequestHeader("X-User-ID") String userID, @Valid @RequestBody ProfileCreateRequest request) {
