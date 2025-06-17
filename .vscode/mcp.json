@@ -1,13 +1,13 @@
 {
   "inputs": [
-    // Github Inputs
+    // Github Input Form
     {
       "type": "promptString",
       "id": "github_token",
       "description": "GitHub Personal Access Token",
       "password": true
     },
-    // Atlassion Inputs
+    // Atlassion Input Form
     {
       "type": "promptString",
       "id": "jira_url",
