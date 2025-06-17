@@ -53,4 +53,4 @@ applyTo: "**"
 
 ---
 
-For more details, see `docs/git-workflow.md`.
+
