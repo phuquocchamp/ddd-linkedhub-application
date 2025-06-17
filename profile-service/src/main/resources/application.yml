@@ -9,3 +9,10 @@ spring:
   cloud:
     stream:
       default-binder: rabbit
+
+springdoc:
+  swagger-ui:
+    enabled: false
+  api-docs:
+    enabled: true
+    path: /v3/api-docs

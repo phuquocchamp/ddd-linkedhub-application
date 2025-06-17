@@ -8,3 +8,9 @@ services:
       - POSTGRES_PASSWORD=secret
     ports:
       - "5433:5432"
+    networks:
+      - linkedhub-network
+
+networks:
+  linkedhub-network:
+    external: true

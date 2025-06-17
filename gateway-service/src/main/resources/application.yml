@@ -5,3 +5,21 @@ spring:
     active: dev
   config:
     import: "optional:configserver:http://localhost:8888"
+
+  main:
+    web-application-type: reactive
+
+
+springdoc:
+  swagger-ui:
+    urls:
+    - name: auth-service
+      url: /linkedhub/api-docs/auth-service
+    - name: profile-service
+      url: /linkedhub/api-docs/profile-service
+    urls-primary-name: auth-service
+    path: /linkedhub/index.html
+  api-docs:
+    path: /linkedhub/api-docs
+  show-actuator: true
+    

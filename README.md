@@ -99,9 +99,32 @@ The project is organized into multiple microservices, each focusing on a specifi
 
 2. **Build the Project**:
 
-   ```bash
-   mvn clean install
-   ```
+    🚀 Usage:
+
+    ```bash
+    # Start all services in configured order
+    ./script.sh start
+
+    # Check service status
+    ./script.sh status
+
+    # View specific service logs
+    ./script.sh logs auth-service
+
+    # Stop all services
+    ./script.sh stop
+
+    # Restart all services
+    ./script.sh restart
+
+    # Get help
+    ./script.sh help
+    ```
+
+    **Start Services**
+    ```bash
+    ./scrip.sh start
+    ```
 
 3. **Run the Services Using Docker**: Start all microservices and their dependencies using Docker Compose:
    
