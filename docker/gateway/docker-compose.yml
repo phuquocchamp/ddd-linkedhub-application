@@ -1,0 +1,53 @@
+#services:
+#  prometheus:
+#    image: prom/prometheus:v2.47.0
+#    volumes:
+#      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+#    ports:
+#      - "9090:9090"
+#    container_name: prometheus
+#    extra_hosts:
+#      - "host.docker.internal:host-gateway"
+#    networks:
+#      - monitoring-network
+#
+#  loki:
+#    image: grafana/loki:2.9.2
+#    ports:
+#      - "3100:3100"
+#    volumes:
+#      - ./loki-config.yml:/etc/loki/loki-config.yaml
+#    command: -config.file=/etc/loki/loki-config.yaml
+#    container_name: loki
+#    networks:
+#      - monitoring-network
+#
+#  promtail:
+#    image: grafana/promtail:2.9.2
+#    volumes:
+#      - ./promtail-config.yml:/etc/promtail/promtail-config.yaml
+#      - ./logs:/logs
+#    command: -config.file=/etc/promtail/promtail-config.yaml
+#    container_name: promtail
+#    networks:
+#      - monitoring-network
+#
+#  grafana:
+#    image: grafana/grafana:10.2.0
+#    ports:
+#      - "3000:3000"
+#    volumes:
+#      - grafana-data:/var/lib/grafana
+#    environment:
+#      - GF_SECURITY_ADMIN_USER=admin
+#      - GF_SECURITY_ADMIN_PASSWORD=admin
+#    container_name: grafana
+#    networks:
+#      - monitoring-network
+#
+#volumes:
+#  grafana-data:
+#
+#networks:
+#  monitoring-network:
+#    driver: bridge
