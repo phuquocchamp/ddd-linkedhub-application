@@ -6,6 +6,8 @@ public interface SecurityConstant {
             "/api/v1/auth/register",
             "/api/v1/auth/reset-password",
             "/api/v1/auth/send-password-reset-token",
-            "/api/v1/auth/public/**"
+            "/api/v1/auth/public/**",
+            "/swagger-ui/**",
+            "/**"
     };
 }

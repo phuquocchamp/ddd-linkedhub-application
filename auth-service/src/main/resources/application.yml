@@ -5,3 +5,11 @@ spring:
     active: dev
   config:
     import: "optional:configserver:http://localhost:8888"
+
+
+springdoc:
+  swagger-ui:
+    enabled: false
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
