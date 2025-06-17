@@ -1,1 +1,67 @@
-{}
+{
+  "inputs": [
+    // Github Inputs
+    {
+      "type": "promptString",
+      "id": "github_token",
+      "description": "GitHub Personal Access Token",
+      "password": true
+    },
+    // Atlassion Inputs
+    {
+      "type": "promptString",
+      "id": "jira_url",
+      "description": "Jira URL (e.g., https://your-company.atlassian.net)",
+      "default": "https://your-company.atlassian.net"
+    },
+    {
+      "type": "promptString",
+      "id": "jira_username",
+      "description": "Jira Username (email address)"
+    },
+    {
+      "type": "promptString",
+      "id": "jira_api_token",
+      "description": "Jira API Token",
+      "password": true
+    }
+  ],
+  "servers": {
+    // Github MCP Server
+    "github": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
+      }
+    },
+    // Atlassian MCP Server
+    "mcp-atlassian": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "-e",
+        "JIRA_URL",
+        "-e",
+        "JIRA_USERNAME",
+        "-e",
+        "JIRA_API_TOKEN",
+        "ghcr.io/sooperset/mcp-atlassian:latest"
+      ],
+      "env": {
+        "JIRA_URL": "${input:jira_url}",
+        "JIRA_USERNAME": "${input:jira_username}",
+        "JIRA_API_TOKEN": "${input:jira_api_token}"
+      }
+    },
+  }
+}

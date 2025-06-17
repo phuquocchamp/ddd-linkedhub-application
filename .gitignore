@@ -1,5 +1,10 @@
 # logs 
 /logs
 
+# jetbrains intelij
+/.idea/*
+
+# vscode
 /.vscode/*
 !/.vscode/mcp.json
+!/.vscode/settings.json
