@@ -1,0 +1,5 @@
+# logs 
+/logs
+
+/.vscode/*
+!/.vscode/mcp.json
